@@ -1,0 +1,94 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    router:
+        resource: '%kernel.project_dir%/app/config/routing_dev.yml'
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: '%kernel.logs_dir%/%kernel.environment%.log'
+            level: debug
+            channels: ['!event']
+        console:
+            type: console
+            process_psr_3_messages: false
+            channels: ['!event', '!doctrine', '!console']
+        # To follow logs in real time, execute the following command:
+        # `bin/console server:log -vv`
+        server_log:
+            type: server_log
+            process_psr_3_messages: false
+            host: 127.0.0.1:9911
+        # uncomment to get logging in your browser
+        # you may have to allow bigger header sizes in your Web server configuration
+        #firephp:
+        #    type: firephp
+        #    level: info
+        #chromephp:
+        #    type: chromephp
+        #    level: info
+
+#swiftmailer:
+#    delivery_addresses: ['me@example.com']
+bazinga_faker:
+    orm: doctrine
+    entities:
+        Clear\ContentBundle\Entity\Tag:
+            number: 500
+            custom_formatters:
+                createdAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }
+                updatedAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }
+        Clear\ContentBundle\Entity\Category:
+            number: 500
+            custom_formatters:
+                createdAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }
+                updatedAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }
+        Clear\ContentBundle\Entity\ContentType:
+            number: 1000
+            custom_formatters:
+                createdAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }
+                updatedAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }
+                type:
+                    method: randomElement
+                    parameters:
+                        -
+                            - 'video/x-msvideo'
+                            - 'image/gif'
+                            - 'image/x-icon'
+                            - 'image/jpeg'
+                            - 'application/json'
+                            - 'audio/ogg'
+                            - 'video/ogg'
+                            - 'image/png'
+                            - 'image/tiff'
+                            - 'audio/webm'
+        Clear\ContentBundle\Entity\Content:
+            number: 10
+            custom_formatters:
+                typeValues:
+                    method: randomElement
+                    parameters:
+                        -
+                            - "video/x-msvideo": "AVI: Audio Video Interleave"
+                            - "image/gif": "Graphics Interchange Format (GIF)"
+                            - "image/x-icon": "con format"
+                            - "image/jpeg": "JPEG images"
+                            - "application/json": "JSON forma"
+                            - "video/mpeg": "MPEG Video"
+                            - "audio/ogg": "OGG audio"
+                            - "video/ogg": "OGG video"
+                            - "image/png": "Portable Network Graphics"
+                            - "image/tiff": "Tagged Image File Format (TIFF)"
+                            - "audio/webm": "WEBM audio"
+                publishedAt:   { method: dateTimeBetween, parameters: [ '-1 month'] }
+                createdAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }
+                updatedAt:     { method: dateTimeBetween, parameters: [ '-1 month'] }

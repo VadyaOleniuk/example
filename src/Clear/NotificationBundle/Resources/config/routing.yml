@@ -1,0 +1,4 @@
+api_route_notification:
+    resource: "@ClearNotificationBundle/Controller"
+    type:     annotation
+    prefix:   /api/v1

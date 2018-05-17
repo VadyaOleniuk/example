@@ -1,0 +1,12 @@
+parameters:
+    clear.content.serializationlistener.class: Clear\ContentBundle\EventListener\SerializationListener
+
+services:
+    clear.listener.serializationlistener:
+        class: "%clear.content.serializationlistener.class%"
+        arguments:
+            - "@vich_uploader.templating.helper.uploader_helper"
+            - "@doctrine.orm.entity_manager"
+            - "@security.token_storage"
+        tags:
+            - {name: jms_serializer.event_subscriber}

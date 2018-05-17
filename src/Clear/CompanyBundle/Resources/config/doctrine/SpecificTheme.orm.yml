@@ -1,0 +1,28 @@
+Clear\CompanyBundle\Entity\SpecificTheme:
+    type: entity
+    table: null
+    repositoryClass: Clear\CompanyBundle\Repository\SpecificThemeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    manyToMany:
+        companies:
+            targetEntity: Clear\CompanyBundle\Entity\Company
+            inversedBy: specifics
+            joinTable:
+                name: specifics_companies
+                joinColumns:
+                    specific_id:
+                        referencedColumnName: id
+                inverseJoinColumnName:
+                    company_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks: {  }

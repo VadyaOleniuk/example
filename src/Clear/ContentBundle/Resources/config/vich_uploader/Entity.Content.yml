@@ -1,0 +1,5 @@
+Clear\ContentBundle\Entity\Content:
+    image:
+        mapping:           content_images # required
+        filename_property: imageName     # required
+        size:              imageSize

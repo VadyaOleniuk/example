@@ -1,0 +1,41 @@
+Clear\LogBundle\Entity\Log:
+    type: entity
+    table: null
+    repositoryClass: Clear\LogBundle\Repository\LogRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        message:
+            type: string
+            length: 255
+        action:
+            type: string
+            length: 255
+        userIdInt:
+            type: integer
+        contentIdInt:
+            type: integer
+        createdAt:
+            type: datetime
+    manyToOne:
+        user:
+            targetEntity: Clear\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                onDelete: "SET NULL"
+                onUpdate: CASCADE
+        content:
+            targetEntity: Clear\ContentBundle\Entity\Content
+            joinColumn:
+                name: content_id
+                referencedColumnName: id
+                onDelete: "SET NULL"
+                onUpdate: CASCADE
+
+    lifecycleCallbacks:
+        prePersist: [ createLog ]

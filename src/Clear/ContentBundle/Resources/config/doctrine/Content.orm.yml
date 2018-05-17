@@ -1,0 +1,159 @@
+Clear\ContentBundle\Entity\Content:
+    type: entity
+    table: null
+    repositoryClass: Clear\ContentBundle\Repository\ContentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+            nullable: true
+        typeValues:
+            type: array
+            nullable: true
+        status:
+            type: integer
+
+        description:
+            type: text
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                 timestampable:
+                     on: update
+        imageName:
+            type: string
+            length: 255
+            nullable: true
+        publishedAt:
+            type: datetime
+        isArticle:
+            type: boolean
+            options:
+                default: 1
+        contentList:
+            type: text
+            nullable: true
+        alt:
+            type: text
+            nullable: true
+
+    manyToOne:
+        contentType:
+            targetEntity: ContentType
+            joinColumn:
+                name: content_type_id
+                nullable: false
+                referencedColumnName: id
+                onUpdate: CASCADE
+        user:
+            targetEntity: Clear\UserBundle\Entity\User
+            joinColumn:
+                name: author_id
+                referencedColumnName: id
+                onDelete: "SET NULL"
+                onUpdate: CASCADE
+        language:
+            targetEntity: Clear\LanguageBundle\Entity\Language
+            joinColumn:
+                name: language_id
+                referencedColumnName: id
+                onDelete: "SET NULL"
+                onUpdate: CASCADE
+    manyToMany:
+        tags:
+            targetEntity: Tag
+            inversedBy: contents
+            joinTable:
+                name: contents_tags
+                joinColumns:
+                    content_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+                inverseJoinColumns:
+                    tag_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+        categories:
+            targetEntity: Category
+            inversedBy: contents
+            joinTable:
+                name: contents_categories
+                joinColumns:
+                    content_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+                inverseJoinColumns:
+                    category_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+        roles:
+            targetEntity: Clear\UserBundle\Entity\Role
+            inversedBy: contents
+            joinTable:
+                name: contents_roles
+                joinColumns:
+                    content_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+                inverseJoinColumnName:
+                    role_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+        companies:
+            targetEntity: Clear\CompanyBundle\Entity\Company
+            inversedBy: contents
+            joinTable:
+                name: contents_companies
+                joinColumns:
+                    content_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+                inverseJoinColumnName:
+                    company_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+        children:
+            targetEntity: Clear\ContentBundle\Entity\Content
+            joinTable:
+                name: contents_link
+                joinColumns:
+                    parent_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+                inverseJoinColumnName:
+                    children_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,12 @@
+parameters:
+    clear.pages.serializationlistener.class: Clear\PagesBundle\EventListener\SerializationListener
+
+services:
+    clear.pages.serializationlistener:
+        class: "%clear.pages.serializationlistener.class%"
+        arguments:
+            - "@vich_uploader.templating.helper.uploader_helper"
+            - "@doctrine.orm.entity_manager"
+            - "@security.token_storage"
+        tags:
+            - {name: jms_serializer.event_subscriber}

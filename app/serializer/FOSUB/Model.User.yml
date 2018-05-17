@@ -1,0 +1,22 @@
+FOS\UserBundle\Model\User:
+    exclusion_policy: ALL
+    properties:
+        username:
+            exclude: true
+            groups: [details]
+        enabled:
+            exclude: true
+            groups: [details]
+        email:
+            exclude: true
+            groups: [details]
+        lastLogin:
+            exclude: true
+    exclusion_policy: NONE
+    properties:
+        password:
+            exclude: true
+        groups:
+            exclude: true
+        roles:
+            exclude: true

@@ -1,0 +1,24 @@
+Clear\OAuthBundle\Entity\RefreshToken:
+    type: entity
+    table: refresh_token
+    repositoryClass: Clear\OAuthBundle\Repository\RefreshTokenRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+            targetEntity: Clear\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                onDelete: CASCADE
+        client:
+            targetEntity: Client
+            joinColumn:
+                name: client_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

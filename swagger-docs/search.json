@@ -1,0 +1,1 @@
+{"swaggerVersion":"1.2","apiVersion":"0.1","basePath":"\/api","resourcePath":"\/search","apis":[{"path":"\/search","operations":[{"method":"GET","summary":"This is a description of your API method","nickname":"get_search","parameters":[],"responseMessages":[]}]}],"models":[],"produces":[],"consumes":[],"authorizations":[]}

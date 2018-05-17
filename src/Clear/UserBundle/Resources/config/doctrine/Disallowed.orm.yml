@@ -1,0 +1,27 @@
+Clear\UserBundle\Entity\Disallowed:
+    type: entity
+    table: null
+    repositoryClass: Clear\UserBundle\Repository\DisallowedRepository
+    uniqueConstraints:
+        uniqueIndex:
+            columns: [ role_id, action_id ]
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        actionId:
+            type: string
+            length: 255
+        actionName:
+            type: string
+            length: 255
+    manyToOne:
+        roleUser:
+            targetEntity: Clear\UserBundle\Entity\Role
+            joinColumn:
+                name: role_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

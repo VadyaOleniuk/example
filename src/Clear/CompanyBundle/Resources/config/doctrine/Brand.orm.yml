@@ -1,0 +1,20 @@
+Clear\CompanyBundle\Entity\Brand:
+    type: entity
+    table: null
+    repositoryClass: Clear\CompanyBundle\Repository\BrandRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fields:
+            type: array
+            nullable: true
+        name:
+            type: string
+            length: 255
+
+
+    lifecycleCallbacks: {  }

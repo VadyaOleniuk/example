@@ -1,0 +1,57 @@
+Clear\ContentBundle\Entity\ContentType:
+    type: entity
+    table: null
+    repositoryClass: Clear\ContentBundle\Repository\ContentTypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: 64
+        icon:
+            type: string
+            length: 255
+            nullable: true
+        iconLigth:
+            type: string
+            length: 255
+            nullable: true
+        iconDark:
+            type: string
+            length: 255
+            nullable: true
+        iconBlack:
+            type: string
+            length: 255
+            nullable: true
+        iconBlue:
+            type: string
+            length: 255
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+
+        form:
+            type: json_array
+
+
+        isActive:
+            type: boolean
+        description:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

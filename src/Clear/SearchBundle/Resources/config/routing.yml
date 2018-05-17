@@ -1,0 +1,5 @@
+clear_search_homepage:
+      resource: "@ClearSearchBundle/Controller/SearchController.php"
+      type:     annotation
+      prefix:     /api/v1
+

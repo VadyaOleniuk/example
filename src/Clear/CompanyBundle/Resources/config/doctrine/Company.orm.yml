@@ -1,0 +1,32 @@
+Clear\CompanyBundle\Entity\Company:
+    type: entity
+    table: null
+    repositoryClass: Clear\CompanyBundle\Repository\CompanyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        url:
+            type: string
+            length: 255
+    oneToOne:
+        brand:
+            targetEntity: Brand
+            joinColumn:
+                name: brand_id
+                referencedColumnName: id
+    manyToMany:
+        contents:
+            targetEntity: Clear\ContentBundle\Entity\Content
+            mappedBy: companies
+        specifics:
+            targetEntity: Clear\CompanyBundle\Entity\SpecificTheme
+            mappedBy: companies
+
+    lifecycleCallbacks: {  }

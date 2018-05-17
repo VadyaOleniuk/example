@@ -1,0 +1,40 @@
+Clear\ContentBundle\Entity\Tag:
+    type: entity
+    table: null
+    repositoryClass: Clear\ContentBundle\Repository\TagRepository
+    uniqueConstraints:
+        unique_index_tag:
+            columns: [ name ]
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        isActive:
+            type: boolean
+            nullable: true
+            options:
+                default: 1
+        description:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+    manyToMany:
+        contents:
+            targetEntity: Content
+            mappedBy: tags
+    lifecycleCallbacks: {  }

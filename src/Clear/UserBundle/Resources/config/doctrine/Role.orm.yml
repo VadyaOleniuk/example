@@ -1,0 +1,22 @@
+Clear\UserBundle\Entity\Role:
+    type: entity
+    table: null
+    repositoryClass: Clear\UserBundle\Repository\RoleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    manyToMany:
+        users:
+            targetEntity: Clear\UserBundle\Entity\User
+            mappedBy: roleUsers
+        contents:
+            targetEntity: Clear\ContentBundle\Entity\Content
+            mappedBy: roles
+    lifecycleCallbacks: {  }

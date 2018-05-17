@@ -1,0 +1,24 @@
+Clear\OAuthBundle\Entity\AuthCode:
+    type: entity
+    table: auth_code
+    repositoryClass: Clear\OAuthBundle\Repository\AuthCodeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+            targetEntity: Clear\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                onDelete: CASCADE
+        client:
+            targetEntity: Client
+            joinColumn:
+                name: client_id
+                referencedColumnName: id
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

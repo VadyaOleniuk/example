@@ -1,0 +1,4 @@
+services:
+#    clear_notification.example:
+#        class: Clear\NotificationBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

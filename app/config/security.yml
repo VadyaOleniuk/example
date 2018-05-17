@@ -1,0 +1,41 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+    providers:
+        fos_userbundle:
+          id: custom.user_provider.email
+    firewalls:
+        dev:
+            pattern:      ^/(_(profiler|wdt)|css|images|js)/
+            security:     false
+
+        oauth_token:
+            pattern:    ^/oauth/v2/token
+            security:   false
+
+        api:
+            pattern:    ^/api/v1
+            fos_oauth:  true
+            stateless:  true
+            anonymous:  true
+
+        oauth_authorize:
+            pattern: ^/oauth/v2/auth
+            security: false
+            anonymous: true
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                #success_handler: demo.login_success_handler
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/resetting/send-email, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/test, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1, roles: [ IS_AUTHENTICATED_FULLY ] }

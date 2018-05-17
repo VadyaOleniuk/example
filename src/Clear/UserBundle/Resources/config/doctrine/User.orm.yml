@@ -1,0 +1,57 @@
+Clear\UserBundle\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: Clear\UserBundle\Repository\UserRepository
+    attributeOverride:
+        usernameCanonical:
+            unique: false
+            name: usernameCanonical
+            column: username_canonical
+            length: 255
+            nullable: false
+            type: string
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        function:
+            type: string
+            length: 255
+            nullable: true
+        lastName:
+            type: string
+            length: 255
+        jobTitle:
+            type: string
+            length: 255
+            nullable: true
+        name:
+            type: string
+            length: 255
+
+    manyToMany:
+        roleUsers:
+            targetEntity: Clear\UserBundle\Entity\Role
+            inversedBy: users
+            joinTable:
+                name: users_roles
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+                inverseJoinColumns:
+                    role_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                        onUpdate: CASCADE
+    manyToOne:
+        company:
+            targetEntity: Clear\CompanyBundle\Entity\Company
+            joinColumn:
+                name: company_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

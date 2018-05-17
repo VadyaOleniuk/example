@@ -1,0 +1,4 @@
+api_route_pages:
+    resource: "@ClearPagesBundle/Controller"
+    type:     annotation
+    prefix:   /api/v1

@@ -1,0 +1,6 @@
+Clear\NotificationBundle\Entity\Notification:
+    properties:
+        email:
+            - NotBlank:
+            - Email:
+                checkMX: true

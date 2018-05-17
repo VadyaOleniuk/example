@@ -1,0 +1,51 @@
+Clear\PagesBundle\Entity\Pages:
+    type: entity
+    table: pages
+    repositoryClass: Clear\PagesBundle\Repository\PagesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            nullable: true
+        type:
+            type: string
+            length: 32
+        status:
+            type: integer
+        content:
+            type: array
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                 timestampable:
+                     on: update
+        publishedAt:
+            type: datetime
+            nullable: true
+
+        slug:
+            type: string
+            length: 512
+            nullable: true
+            gedmo:
+                slug:
+                    separator: "-"
+                    fields:
+                        - title
+
+    lifecycleCallbacks: {  }

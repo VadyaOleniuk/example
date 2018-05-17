@@ -1,0 +1,70 @@
+parameters:
+    parameter:
+          resetting.template: '%fos_user.registration.confirmation.template%'
+          front.url: '%front_url%'
+          from_email:
+              resetting: '%fos_user.resetting.email.from_email%'
+
+    file.upload.directory.namer.class:  Clear\FileStorageBundle\Namer\FileDirectoryNamer
+
+services:
+    clear.form.registration:
+        class: Clear\UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: clear_user_registration }
+
+    securable_annotation_driver:
+        class: Clear\SecurityBundle\Annotations\Driver\AnnotationDriver
+        tags:
+            - {name: kernel.event_listener, event: kernel.controller, method: onKernelController}
+        arguments:
+            - '@annotation_reader'
+            - '@security.token_storage'
+            - '@doctrine.orm.entity_manager'
+
+    fos_user.mail:
+        class: Clear\UserBundle\Mailer\Mailer
+        arguments:
+            - '@mailer'
+            - '@router'
+            - '@templating.engine.twig'
+            - '%parameter%'
+    util.data:
+        class: Clear\ContentBundle\Util\Util
+
+    monolog.db_handler:
+        class: Clear\LogBundle\Util\MonologDBHandler
+        arguments: ['@doctrine.orm.entity_manager']
+
+    monolog.processor.request:
+         class: Clear\LogBundle\Util\RequestProcessor
+         arguments: ['@request_stack', '@service_container']
+         tags:
+             - { name: monolog.processor, method: processRecord, handler: db }
+
+    log.subscriber.abstract_subscriber:
+            class: Clear\LogBundle\EventSubscriber\AbstractSubscriber
+            arguments: ['@service_container']
+
+    log.subscriber.content_subscriber:
+            class: Clear\LogBundle\EventSubscriber\ContentSubscriber
+            parent: log.subscriber.abstract_subscriber
+            tags:
+                - { name: kernel.event_subscriber }
+
+    log.data:
+        class: Clear\LogBundle\Util\Logger
+        arguments: ['@service_container']
+
+    file.upload.directory.namer:
+           class: '%file.upload.directory.namer.class%'
+
+    util.file.deleter:
+            class: Clear\ContentBundle\Util\FileDeleter
+            arguments: ['@doctrine.orm.entity_manager', '@service_container']
+
+    clear.user.login:
+        class: Clear\UserBundle\EventListener\LocaleListener
+        arguments: ['@service_container', '@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_subscriber }

@@ -1,0 +1,20 @@
+Clear\NotificationBundle\Entity\Email:
+    type: entity
+    table: null
+    repositoryClass: Clear\NotificationBundle\Repository\EmailRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        text:
+            type: text
+        subject:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

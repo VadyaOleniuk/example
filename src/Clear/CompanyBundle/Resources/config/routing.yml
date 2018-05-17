@@ -1,0 +1,4 @@
+api_route_company:
+    resource: "@ClearCompanyBundle/Controller"
+    type:     annotation
+    prefix:   /api/v1

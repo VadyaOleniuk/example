@@ -1,0 +1,21 @@
+Clear\LanguageBundle\Entity\Language:
+    type: entity
+    table: null
+    repositoryClass: Clear\LanguageBundle\Repository\LanguageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 64
+        shortName:
+            type: string
+            length: 16
+
+
+
+    lifecycleCallbacks: {  }

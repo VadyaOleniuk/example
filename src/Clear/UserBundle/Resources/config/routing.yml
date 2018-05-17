@@ -1,0 +1,10 @@
+user_route:
+    resource: "@ClearUserBundle/Controller"
+    type:     annotation
+    prefix:   /api/v1
+
+user_forgot_password:
+    resource: "@ClearUserBundle/Controller/ResettingController.php"
+    type:     annotation
+    prefix:   /
+

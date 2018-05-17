@@ -1,0 +1,4 @@
+services:
+    custom.user_provider.email:
+            class: Clear\UserBundle\Security\EmailProvider
+            arguments: ['@fos_user.user_manager']

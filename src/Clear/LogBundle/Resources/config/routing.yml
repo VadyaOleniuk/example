@@ -1,0 +1,4 @@
+api_route_log:
+    resource: "@ClearLogBundle/Controller"
+    type:     annotation
+    prefix:   /api/v1

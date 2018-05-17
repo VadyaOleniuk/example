@@ -1,0 +1,31 @@
+Clear\FileStorageBundle\Entity\FileStorage:
+    type: entity
+    table: null
+    repositoryClass: Clear\FileStorageBundle\Repository\FileStorageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        fileName:
+            type: string
+            length: 100
+        originalName:
+            type: string
+            length: 512
+        alt:
+            type: text
+            nullable: true
+    lifecycleCallbacks: {  }

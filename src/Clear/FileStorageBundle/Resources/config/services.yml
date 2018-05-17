@@ -1,0 +1,4 @@
+services:
+#    clear_files_attached.example:
+#        class: Clear\FileStorageBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

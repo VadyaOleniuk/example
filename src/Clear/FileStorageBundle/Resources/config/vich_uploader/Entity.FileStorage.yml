@@ -1,0 +1,5 @@
+Clear\FileStorageBundle\Entity\FileStorage:
+    image:
+        mapping:           content_images # required
+        filename_property: fileName     # required
+        size:              fileSize

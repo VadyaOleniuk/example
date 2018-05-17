@@ -1,0 +1,18 @@
+parameters:
+    clear_search.searcher_factory.class: Clear\SearchBundle\Searcher\SearcherFactory
+    clear_search.user_content.class: Clear\SearchBundle\Searcher\UserContentSearcher
+services:
+    clear_search.factory:
+        class: '%clear_search.searcher_factory.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@security.token_storage'
+            - 'admin_finder': '@clear_search.admin_content'
+
+    clear_search.admin_content:
+        class: '%clear_search.user_content.class%'
+        arguments:
+            - '@request_stack'
+            - '@security.token_storage'
+            - '@fos_elastica.finder.app_admin.content'
+            - '%searcher_size%'

@@ -1,0 +1,32 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host: 127.0.0.1
+    database_port: ~
+    database_name: symfony
+    database_user: root
+    database_password: ~
+    # You should uncomment this if you want to use pdo_sqlite
+    #database_path: '%kernel.project_dir%/var/data/data.sqlite'
+
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: ~
+    mailer_password: ~
+
+    elastica_host: localhost
+    elastica_port: 9200
+
+    searcher_size: 6
+    content_size: 10
+    front_url: http://localhost:8080
+    test_parameters:
+            random_id: hfxueyakuh44w8osgg8wkkgcskgw8s08gcwk448cwwkg8oc4w
+            secret: 69cem3f7d808s00oswgsco4k4w4cco8os08c0co4844skw8ko0
+            expires: 1506925507
+            access_token: OTQzZjU0ZmYyNGJiODg1NTFjMzljOWVjYTlkNDNkY2UwZDNlNmVhMzRlZjllNGUyZDM4ODI5NjI3MzAwN2NmZQ
+            token: NGE0YWMwYmNiOTU4M2JhOWM2NzhiOTA0ZTk5OWVmYjZiZGIzYWQ0M2U5MzE1YTA2MmZlOTc0NTc4MGJmYjI4NQ
+
+    # A secret key that's used to generate certain security-related tokens
+    secret: ThisTokenIsNotSoSecretChangeIt

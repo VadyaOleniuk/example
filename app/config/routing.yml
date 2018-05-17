@@ -1,0 +1,63 @@
+clear_pages:
+    resource: "@ClearPagesBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_language:
+    resource: "@ClearLanguageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_log:
+    resource: "@ClearLogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_files_attached:
+    resource: "@ClearFileStorageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_notification:
+    resource: "@ClearNotificationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_company:
+    resource: "@ClearCompanyBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_security:
+    resource: "@ClearSecurityBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+clear_user:
+    resource: "@ClearUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_o_auth:
+    resource: "@ClearOAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_search:
+    resource: "@ClearSearchBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clear_content:
+    resource: "@ClearContentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+api_route:
+    type: rest
+    prefix:   /
+    resource: "@ClearContentBundle/Resources/config/routing.yml"
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+

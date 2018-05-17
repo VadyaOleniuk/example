@@ -1,0 +1,28 @@
+Clear\NotificationBundle\Entity\Notification:
+    type: entity
+    table: null
+    repositoryClass: Clear\NotificationBundle\Repository\NotificationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            length: 255
+        type:
+            type: string
+            length: 255
+        message:
+            type: text
+        title:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+    lifecycleCallbacks: {  }
